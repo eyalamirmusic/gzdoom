@@ -406,7 +406,7 @@ set( ZDOOM_LIBS ${ZDOOM_LIBS} "${ZLIB_LIBRARIES}" "${JPEG_LIBRARIES}" "${BZIP2_L
 if (HAVE_VULKAN)
 	set( ZDOOM_LIBS ${ZDOOM_LIBS} "glslang" "SPIRV" "OGLCompiler")
 endif()
-include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIR}" "${JPEG_INCLUDE_DIR}" "${ZMUSIC_INCLUDE_DIR}" )
+include_directories( ${ZLIB_INCLUDE_DIR} ${BZIP2_INCLUDE_DIR} ${LZMA_INCLUDE_DIR} ${JPEG_INCLUDE_DIR} ${ZMUSIC_INCLUDE_DIR})
 
 if( ${HAVE_VM_JIT} )
 	add_definitions( -DHAVE_VM_JIT )
@@ -1255,7 +1255,7 @@ if( UNIX )
 	endif()
 endif()
 
-target_link_libraries( zdoom ${ZDOOM_LIBS} gdtoa lzma ${ZMUSIC_LIBRARIES} )
+target_link_libraries( zdoom ${ZDOOM_LIBS} gdtoa lzma zmusic)
 
 include_directories( .
 	common/audio/sound

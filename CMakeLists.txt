@@ -1,6 +1,11 @@
 cmake_minimum_required( VERSION 3.1.0 )
 project(GZDoom)
 
+include(cmake/Config.cmake)
+include(cmake/CPM.cmake)
+
+CPMAddPackage("gh:coelckers/zmusic#master")
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF) 
@@ -316,9 +321,9 @@ set( CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} ${REL_C_FLAGS}" )
 set( CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} ${REL_C_FLAGS}" )
 set( CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${DEB_C_FLAGS} -D_DEBUG" )
 
-option(FORCE_INTERNAL_ZLIB "Use internal zlib")
-option(FORCE_INTERNAL_JPEG "Use internal jpeg")
-option(FORCE_INTERNAL_BZIP2 "Use internal bzip2")
+option(FORCE_INTERNAL_ZLIB "Use internal zlib" ON)
+option(FORCE_INTERNAL_JPEG "Use internal jpeg" ON)
+option(FORCE_INTERNAL_BZIP2 "Use internal bzip2" ON)
 option(FORCE_INTERNAL_ASMJIT "Use internal asmjit" ON)
 mark_as_advanced( FORCE_INTERNAL_ASMJIT )
 
